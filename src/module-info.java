@@ -1,0 +1,2 @@
+module advent.of.code {
+}
