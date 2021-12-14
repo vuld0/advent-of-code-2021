@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class PartOne {
+public class PartTwo {
     public static void main(String[] args){
         File myFile = new File("inputs/aoc-input-5.txt");
         ArrayList<String> lineSegments = new ArrayList<>();
@@ -43,6 +43,25 @@ public class PartOne {
                 else if(y1 == y2){
                     for (int i = Math.min(x1,x2); i <= Math.max(x1,x2) ; i++) {
                         graph[1000 * y1 + i]++;
+                    }
+                }
+                else {
+                    if (y1 < y2 && x1 < x2) {
+                        for (int i = 0; i <= y2 - y1; i++) {
+                            graph[1000 * (y1 + i) + (x1 + i)]++;
+                        }
+                    } else if (y1 > y2 && x1 > x2) {
+                        for (int i = 0; i <= y1 - y2; i++) {
+                            graph[1000 * (y1 - i) + (x1 - i)]++;
+                        }
+                    } else if (y1 < y2 && x1 > x2) {
+                        for (int i = 0; i <= y2 - y1; i++) {
+                            graph[1000 * (y1 + i) + (x1 - i)]++;
+                        }
+                    } else if (y1 > y2 && x1 < x2) {
+                        for (int i = 0; i <= x2 - x1; i++) {
+                            graph[1000 * (y1 - i) + (x1 + i)]++;
+                        }
                     }
                 }
                 j++;
